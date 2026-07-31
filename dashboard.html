@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Controle de EPI</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+:root{
+    --azul:#0097CE;
+    --azulEscuro:#0079A6;
+    --laranja:#F36F21;
+    --cinza:#f4f7fa;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--cinza);
+    font-family:"Segoe UI",sans-serif;
+}
+
+/* ==========================
+   TOPO
+========================== */
+
+.topo{
+    background:#fff;
+    margin:15px;
+    padding:20px;
+    border-radius:16px;
+    border-top:6px solid var(--laranja);
+    box-shadow:0 4px 18px rgba(0,0,0,.08);
+
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+/* ==========================
+   LOGO
+========================== */
+
+.logo-area{
+    min-width:350px;
+}
+
+.logo-area img{
+    width:120px;
+    margin-bottom:15px;
+}
+
+.logo-area h2{
+    color:var(--azulEscuro);
+    font-size:24px;
+    font-weight:800;
+}
+
+.logo-area p{
+    margin-top:8px;
+    color:#666;
+}
+
+/* ==========================
+   FILTROS
+========================== */
+
+.filtros{
+    width:350px;
+}
+
+.linha-filtro{
+    display:flex;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.linha-filtro label{
+    width:80px;
+    font-weight:700;
+}
+
+.linha-filtro select{
+    flex:1;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #d0d7de;
+    background:#fff;
+}
+
+/* ==========================
+   USUÁRIO
+========================== */
+
+.usuario{
+    min-width:320px;
+    text-align:right;
+}
+
+.usuario-info{
+    margin-bottom:8px;
+    font-size:15px;
+    color:#444;
+}
+
+.usuario-info strong{
+    color:#222;
+}
+
+.acoes{
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+    justify-content:flex-end;
+    flex-wrap:wrap;
+}
+
+.btn-topo{
+    border:none;
+    cursor:pointer;
+    padding:10px 14px;
+    border-radius:10px;
+    background:var(--azul);
+    color:white;
+    font-weight:600;
+}
+
+.btn-topo:hover{
+    background:var(--azulEscuro);
+}
+
+.btn-sair{
+    background:#dc3545;
+}
+
+.btn-sair:hover{
+    background:#c82333;
+}
+
+/* ==========================
+   DASHBOARD
+========================== */
+
+.conteudo{
+    padding:0 15px 15px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+.card .icone{
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    color:white;
+    font-size:24px;
+    margin-bottom:12px;
+}
+
+.azul .icone{
+    background:#0097CE;
+}
+
+.laranja .icone{
+    background:#F36F21;
+}
+
+.verde .icone{
+    background:#28a745;
+}
+
+.vermelho .icone{
+    background:#dc3545;
+}
+
+.card h3{
+    font-size:15px;
+    color:#666;
+}
+
+.card h2{
+    margin-top:8px;
+    font-size:32px;
+    color:#222;
+}
+
+@media(max-width:1100px){
+
+    .topo{
+        flex-direction:column;
+    }
+
+    .usuario{
+        text-align:left;
+    }
+
+    .acoes{
+        justify-content:flex-start;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topo">
+
+    <!-- LOGO -->
+
+    <div class="logo-area">
+
+        logo_energisa.png
+
+        <h2>
+            Sistema de Controle de EPI,
+            EPC e Ferramental
+        </h2>
+
+        <p>
+            Gestão completa de equipamentos,
+            inventários e movimentações.
+        </p>
+
+    </div>
+
+    <!-- FILTROS -->
+
+    <div class="filtros">
+
+        <div class="linha-filtro">
+            <label>Regional</label>
+
+            <select id="regional">
+                <option>DEOP-L</option>
+            </select>
+        </div>
+
+        <div class="linha-filtro">
+            <label>Polo</label>
+
+            <select id="polo">
+                <option>Cajazeiras</option>
+            </select>
+        </div>
+
+        <div class="linha-filtro">
+            <label>Base</label>
+
+            <select id="base">
+                <option>Base Cajazeiras I</option>
+            </select>
+        </div>
+
+    </div>
+
+    <!-- USUARIO -->
+
+    <div class="usuario">
+
+        <div class="usuario-info">
+            👋 Olá,
+            <strong id="nomeUsuario">
+                Pedro Fillype
+            </strong>
+        </div>
+
+        <div class="usuario-info">
+            📍
+            <span id="regionalUsuario">
+                DEOP-L
+            </span>
+        </div>
+
+        <div class="usuario-info">
+            🏢
+            <span id="poloUsuario">
+                Cajazeiras
+            </span>
+        </div>
+
+        <div class="usuario-info">
+            🏠
+            <span id="baseUsuario">
+                Base Cajazeiras I
+            </span>
+        </div>
+
+        <div class="usuario-info">
+            📅
+            <span id="dataAtual"></span>
+
+            &nbsp;&nbsp;
+
+            🕒
+            <span id="horaAtual"></span>
+        </div>
+
+        <div class="acoes">
+
+            <button class="btn-topo">
+                <i class="bi bi-bell"></i>
+                Notificações
+            </button>
+
+            <button class="btn-topo">
+                <i class="bi bi-person"></i>
+                Perfil
+            </button>
+
+            <button
+                class="btn-topo btn-sair"
+                onclick="logout()">
+
+                <i class="bi bi-box-arrow-right"></i>
+                Sair
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- DASHBOARD -->
+
+<div class="conteudo">
+
+    <div class="cards">
+
+        <div class="card azul">
+            <div class="icone">
+                <i class="bi bi-shield-check"></i>
+            </div>
+
+            <h3>Equipamentos</h3>
+            <h2 id="totalEquipamentos">0</h2>
+        </div>
+
+        <div class="card laranja">
+            <div class="icone">
+                <i class="bi bi-clipboard-check"></i>
+            </div>
+
+            <h3>LAP</h3>
+            <h2 id="totalLap">0</h2>
+        </div>
+
+        <div class="card verde">
+            <div class="icone">
+                <i class="bi bi-box-seam"></i>
+            </div>
+
+            <h3>Inventários</h3>
+            <h2 id="totalInventarios">0</h2>
+        </div>
+
+        <div class="card vermelho">
+            <div class="icone">
+                <i class="bi bi-exclamation-triangle"></i>
+            </div>
+
+            <h3>Divergências</h3>
+            <h2 id="totalDivergencias">0</h2>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://coec-epb.github.io/login/auth.js"></script>
+
+<script>
+
+function atualizarRelogio(){
+
+    const agora = new Date();
+
+    document.getElementById("dataAtual")
+    .innerHTML =
+    agora.toLocaleDateString("pt-BR");
+
+    document.getElementById("horaAtual")
+    .innerHTML =
+    agora.toLocaleTimeString("pt-BR");
+
+}
+
+setInterval(
+    atualizarRelogio,
+    1000
+);
+
+atualizarRelogio();
+
+const usuario = getUser();
+
+if(usuario){
+
+    document.getElementById("nomeUsuario")
+    .innerHTML =
+    usuario.nome || "";
+
+    document.getElementById("regionalUsuario")
+    .innerHTML =
+    usuario.regional || "";
+
+    document.getElementById("poloUsuario")
+    .innerHTML =
+    usuario.polo || "";
+
+}
+
+async function carregarDashboard(){
+
+    try{
+
+        const resp =
+        await authFetch(
+            `${API}/dashboard`
+        );
+
+        const dados =
+        await resp.json();
+
+        const d =
+        dados.dados || dados;
+
+        document.getElementById(
+            "totalEquipamentos"
+        ).innerText =
+        d.equipamentos || 0;
+
+        document.getElementById(
+            "totalLap"
+        ).innerText =
+        d.lap || 0;
+
+        document.getElementById(
+            "totalInventarios"
+        ).innerText =
+        d.inventarios || 0;
+
+        document.getElementById(
+            "totalDivergencias"
+        ).innerText =
+        d.divergencias || 0;
+
+    }
+
+    catch(e){
+
+        console.error(e);
+
+    }
+
+}
+
+carregarDashboard();
+
+</script>
+
+</body>
+</html>
