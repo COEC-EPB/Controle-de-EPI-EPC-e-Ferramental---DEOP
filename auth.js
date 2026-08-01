@@ -1,6 +1,6 @@
 // /js/auth.js
 
-const API = "https://long-hall-0aaa.pedro-fillype.workers.dev";
+const API = "https://material.pedro-fillype.workers.dev";
 
 function getToken() {
   return localStorage.getItem("token");
