@@ -24,8 +24,12 @@ function isLogged() {
 }
 
 function logout() {
-  localStorage.clear();
-  window.location.href = "/login/";
+
+    localStorage.clear();
+
+    window.location.href =
+    "https://coec-epb.github.io/login-Material/";
+
 }
 
 async function authFetch(url, options = {}) {
