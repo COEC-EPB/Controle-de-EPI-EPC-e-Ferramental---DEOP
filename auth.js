@@ -53,7 +53,7 @@ async function authFetch(url, options = {}) {
     alert("🚫 USUÁRIO NÃO AUTORIZADO");
 
     // redireciona pro ADD
-    window.location.href = "https://coec-epb.github.io/Controle-de-EPI-EPC-e-Ferramental---DEOP/";
+    window.location.href = "https://coec-epb.github.io/login-Material/";
     return resp;
   }
 
