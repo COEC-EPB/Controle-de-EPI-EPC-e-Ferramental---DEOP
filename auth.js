@@ -23,12 +23,17 @@ function isLogged() {
   return !!getToken();
 }
 
-function logout() {
+function logout(){
 
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    sessionStorage.clear();
     localStorage.clear();
 
-    window.location.href =
-    "https://coec-epb.github.io/login-Material/";
+    window.location.replace(
+        "https://coec-epb.github.io/login-Material/"
+    );
 
 }
 
